@@ -5,6 +5,7 @@ import {
   GAME_OVER,
   SET_WACK_COUNT,
   SET_SCORE,
+  RESET_GAME,
 } from "../constants"
 
 describe("gameReducer", () => {
@@ -52,14 +53,32 @@ describe("gameReducer", () => {
     })
   })
 
-  it("sets the score and clears out the `uptimeWackCount`", () => {
-    const payload = { uptimeWackCount: 2 }
+  it(`sets the score and clears out the 'uptimeWackCount'
+    it will also update the 'bombCount'`, () => {
+    const noBombPayload = { uptimeWackCount: 2 }
     expect(gameReducer(undefined, {
       type: SET_SCORE,
-      payload,
+      payload: noBombPayload,
     })).toEqual({
       ...initialState,
       score: 4,
     })
+
+    const bombPayload = { uptimeWackCount: 2, addBomb: true }
+    expect(gameReducer(undefined, {
+      type: SET_SCORE,
+      payload: bombPayload,
+    })).toEqual({
+      ...initialState,
+      score: 4,
+      bombCount: 3,
+    })
+  })
+
+  it(`resets the game
+    by setting the initial state for the game reducer`, () => {
+    expect(gameReducer(undefined, {
+      type: RESET_GAME,
+    })).toEqual(initialState)
   })
 })

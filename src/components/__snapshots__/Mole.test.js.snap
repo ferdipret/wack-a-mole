@@ -2,12 +2,13 @@
 
 exports[`Mole renders properly 1`] = `
 <styled.div
+  className="mole-container"
   onClick={[Function]}
   success={false}
 >
   <styled.div>
     <styled.div
-      className="bomb-img"
+      className="bomb-image"
     />
   </styled.div>
   <styled.div>

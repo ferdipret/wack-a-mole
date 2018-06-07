@@ -93,9 +93,12 @@ function Mole ({ active, index, onMoleClick, bomb }) {
   }
 
   return (
-    <MoleContainer onClick={onClick} success={active}>
+    <MoleContainer
+      className="mole-container"
+      onClick={onClick}
+      success={active}>
       <BombWrapper>
-        <BombImg className="bomb-img" active={bomb}/>
+        <BombImg className="bomb-image" active={bomb}/>
       </BombWrapper>
       <MoleWrapper>
         <MoleImg className="mole-image" active={active}/>

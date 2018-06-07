@@ -49,6 +49,7 @@ export class App extends Component {
     setWackCount: PropTypes.func,
     setGameOverValue: PropTypes.func,
     clearMolesInField: PropTypes.func,
+    resetGame: PropTypes.func,
     setScore: PropTypes.func,
     moles: PropTypes.arrayOf(PropTypes.object),
   }
@@ -58,6 +59,8 @@ export class App extends Component {
 
     this.state = {
       intervalID: undefined,
+      startTimer: undefined,
+      currentTime: undefined,
     }
   }
 
@@ -175,18 +178,22 @@ export class App extends Component {
    */
   updateTimerState = (isGameRunning, currentTime) => {
     if (isGameRunning && currentTime > 0) {
-      const startTimer = Date.now()
       this.setState({
-        intervalID: setInterval(() => {
-          const payload =
-            currentTime - Math.floor((Date.now() - startTimer) / 1000)
-          if (this.props.timer !== payload) {
-            this.props.updateTimer(payload)
-          }
-        }, 100),
+        currentTime,
+        startTimer: Date.now(),
+        intervalID: setInterval(this.calcIntervalValue, 100),
       })
     } else {
       window.clearInterval(this.state.intervalID)
+    }
+  }
+
+  calcIntervalValue = () => {
+    const { timer, updateTimer } = this.props
+    const { startTimer, currentTime } = this.state
+    const payload = currentTime - Math.floor((Date.now() - startTimer) / 1000)
+    if (timer !== payload) {
+      updateTimer(payload)
     }
   }
 
@@ -250,9 +257,16 @@ export class App extends Component {
    * It get's called when the user click the start/pause button
    */
   handleRunningStateToggle = () => {
-    const { running, updateRunningState, gameover, resetGame } = this.props
+    const {
+      running,
+      updateRunningState,
+      gameover,
+      resetGame,
+      updateTimer,
+    } = this.props
+
     if (gameover) {
-      this.props.updateTimer(60)
+      updateTimer(60)
       resetGame()
     }
     updateRunningState(!running)

@@ -18,13 +18,14 @@ describe("molesReducer", () => {
       payload: {
         moles: initialState,
         uptime: 5,
+        addBomb: true,
       },
     }
 
     const activeMoles = molesReducer(undefined, action).filter(
       mole => mole.active
     )
-    expect(activeMoles).toHaveLength(4)
+    expect(activeMoles).toHaveLength(3)
   })
 
   it("finds wacked moles and set their active state to false", () => {

@@ -31,6 +31,7 @@ exports[`App renders properly 1`] = `
     />
   </div>
   <Field
+    moles={Array []}
     onMoleClick={[Function]}
     running={false}
     score={0}

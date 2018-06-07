@@ -35,4 +35,15 @@ describe("Mole", () => {
       expect(wrapper.find(".mole-image")).toHaveStyleRule("top", "0")
     })
   })
+
+  describe("when setting an `active` prop on a bomb", () => {
+    it("should have a different `top` style property", () => {
+      expect(wrapper.find(".bomb-image")).toHaveStyleRule("top", "80px")
+
+      wrapper.setProps({ bomb: true })
+
+      expect(wrapper.find(".bomb-image")).toHaveStyleRule("top", "0")
+
+    })
+  })
 })

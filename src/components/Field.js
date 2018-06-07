@@ -45,7 +45,7 @@ function Field({moles, onMoleClick, running, timer, score}) {
 }
 
 Field.propTypes = {
-  moles: PropTypes.arrayOf(PropTypes.object),
+  moles: PropTypes.arrayOf(PropTypes.object).isRequired,
   onMoleClick: PropTypes.func.isRequired,
   running: PropTypes.bool.isRequired,
   timer: PropTypes.number.isRequired,

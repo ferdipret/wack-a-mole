@@ -17,4 +17,25 @@ describe("Field", () => {
   it("renders properly", () => {
     expect(wrapper).toMatchSnapshot()
   })
+
+  describe("when passing some dynamic props", () => {
+    it("renders dynamic text", () => {
+      expect.assertions(3)
+
+      wrapper.setProps({ timer: 60 })
+
+      expect(wrapper.find("span").text())
+        .toEqual("Click the `START` button to begin a game")
+
+      wrapper.setProps({ timer: 0 })
+
+      expect(wrapper.find("h2").text())
+        .toEqual("GAME OVER!")
+
+      wrapper.setProps({ timer: 30 })
+
+      expect(wrapper.find("span").text())
+        .toEqual("Game Paused")
+    })
+  })
 })

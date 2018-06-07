@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App renders properly 1`] = `
+<div>
+  <styled.div>
+    wack-a-mole
+  </styled.div>
+  <Button
+    gameover={false}
+    onClick={[Function]}
+    running={false}
+  />
+  <div
+    style={
+      Object {
+        "color": "hsl(16, 25%, 38%)",
+        "display": "flex",
+        "fontFamily": "'Share Tech Mono', monospace",
+        "fontSize": "20px",
+        "justifyContent": "space-between",
+        "padding": "10px",
+      }
+    }
+  >
+    <div>
+      Score: 
+      0
+    </div>
+    <Timer
+      timer={60}
+    />
+  </div>
+  <Field
+    onMoleClick={[Function]}
+    running={false}
+    score={0}
+    timer={60}
+  />
+</div>
+`;

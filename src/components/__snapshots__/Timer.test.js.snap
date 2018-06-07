@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Timer renders properly 1`] = `
+<styled.div>
+  Time remaining: 
+  60
+</styled.div>
+`;

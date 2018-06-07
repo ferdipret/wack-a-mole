@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Mole renders properly 1`] = `
+<styled.div
+  onClick={[Function]}
+  success={false}
+>
+  <styled.div>
+    <styled.div
+      className="bomb-img"
+    />
+  </styled.div>
+  <styled.div>
+    <styled.div
+      active={false}
+      className="mole-image"
+    />
+  </styled.div>
+  <styled.div />
+</styled.div>
+`;
